@@ -1,0 +1,35 @@
+<template>
+    <div class="slds-p-horizontal_small slds-p-top_large" style="height: 55vh;">
+        <div class="slds-form" role="list">
+            <div class="slds-form__row">
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-is-editing">
+                        <h2>Step 1 : Select Object </h2>
+                        <div>
+                            <lightning-combobox name="progress" value={objvalue} placeholder="Select object"
+                                options={objoptions} onchange={handleChange}></lightning-combobox>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-form__item" role="listitem">
+                    <div class="slds-form-element slds-is-editing" style="width:100%;">
+                        <template if:true={objvalue}>
+                            <h3>Step 2 : Select fields </h3>
+                            <div>
+                                <lightning-dual-listbox name="languages" source-label="Available"
+                                    selected-label="Selected" options={options}
+                                    onchange={handleFieldChange}></lightning-dual-listbox>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slds-align_absolute-center slds-border_top slds-p-top_medium">
+        <lightning-button-group>
+            <lightning-button label="Cancel"></lightning-button>
+            <lightning-button label="Download" variant="brand" onclick={buttonclick}></lightning-button>
+        </lightning-button-group>
+    </div>
+</template>
