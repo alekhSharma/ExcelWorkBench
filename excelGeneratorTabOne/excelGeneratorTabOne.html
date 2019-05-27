@@ -1,11 +1,13 @@
 <template>
-    <lightning-progress-indicator current-step={currentStep} type="base" has-error="true" variant="base">
+    <div style="height: 5vh;vertical-align: super;">
+        <lightning-progress-indicator current-step={currentStep} type="base" variant="base" >
                 <lightning-progress-step label="Step 1" value="1"></lightning-progress-step>
                 <lightning-progress-step label="Step 2" value="2"></lightning-progress-step>
                 <lightning-progress-step label="Step 3" value="3"></lightning-progress-step>
                 <lightning-progress-step label="Step 4" value="4"></lightning-progress-step>
-    </lightning-progress-indicator>
-    <div class="slds-p-horizontal_small slds-p-top_xx-large" style="height: 55vh;vertical-align: super;">
+            </lightning-progress-indicator>
+    </div>
+    <div class="slds-p-horizontal_large slds-p-top_xx-large" style="height: 50vh;vertical-align: super;">
         <div class="slds-form" role="list">
             <div class="slds-form-element">
                 <div class="slds-form__row">
