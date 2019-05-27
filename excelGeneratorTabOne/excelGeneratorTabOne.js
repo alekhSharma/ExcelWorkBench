@@ -19,7 +19,7 @@ export default class ExcelGeneratorTabOne extends LightningElement {
 
     @wire(objectlist)objectlist;
     @track fieldresult;
-    @track currentStep=1;
+    @track currentStep='1';
 
     // combo box attribute
     @track objvalue = '';
@@ -54,7 +54,7 @@ export default class ExcelGeneratorTabOne extends LightningElement {
         this._selected.splice(0,this._selected.length);
         this.objvalue = event.detail.value;
         console.log(this.currentStep);
-        this.currentStep = 2;
+        this.currentStep = '2';
         console.log(this.currentStep);
     }
 
@@ -90,7 +90,10 @@ export default class ExcelGeneratorTabOne extends LightningElement {
         let reader = new FileReader();
         reader.readAsText(fileInput, "UTF-8");
         let self = this;
+        
         reader.onloadend = function(){
+            self.currentStep = '3';
+            console.log(self.currentStep);
             let csv = reader.result;
             var arr =  csv.split('\n');
             let valuearr = arr[0].split(",");
@@ -99,6 +102,7 @@ export default class ExcelGeneratorTabOne extends LightningElement {
                 self.headers.push(element.replace(/"/g,""));
             });
             self.recordSize = arr.length-2;
+         
             if(self.recordSize<0){
                 self.recordSize=0;
             }
@@ -145,7 +149,6 @@ export default class ExcelGeneratorTabOne extends LightningElement {
         var results = Papa.parse(csv, {
             header: true
         });
-        console.log(results);
         var json = JSON.stringify(results.data);
         return json;
     }
